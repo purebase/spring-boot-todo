@@ -1,6 +1,7 @@
 package com.example;
 
 import com.vaadin.annotations.Theme;
+import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.VaadinRequest;
@@ -9,6 +10,11 @@ import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/* Calling debug-windows in browser by adding parameter 'debug' to url.
+ * For example "http://localhost:8080/?debug"
+ * @see "https://vaadin.com/docs/v8/framework/advanced/advanced-debug.html"
+ */
+@VaadinServletConfiguration(productionMode = false, ui = TodoUI.class)
 @SpringUI
 @Theme("valo")
 public class TodoUI extends UI {
