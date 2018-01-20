@@ -7,5 +7,5 @@
 You can run the project with 
 
 ```
-mvn package spring-boot:run
+gradlew bootRun
 ```
