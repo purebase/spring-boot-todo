@@ -1,5 +1,6 @@
 package com.example;
 
+import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.event.ShortcutAction;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @VaadinServletConfiguration(productionMode = false, ui = TodoUI.class)
 @SpringUI
 @Theme("valo")
+@Push
 public class TodoUI extends UI {
 
     private VerticalLayout layout;
@@ -31,6 +33,9 @@ public class TodoUI extends UI {
         addForm();
         addTodoList();
         addActionButtons();
+
+        // Start the data feed thread
+        new FeederThread().start();
     }
 
     private void setupLayout() {
@@ -80,5 +85,40 @@ public class TodoUI extends UI {
 
         layout.addComponent(deleteButton);
 
+    }
+
+    class FeederThread extends Thread {
+        int count = 0;
+
+        @Override
+        public void run() {
+            try {
+                // Update the data for a while
+                while (count < 100) {
+                    Thread.sleep(5000);
+
+                    access(new Runnable() {
+                        @Override
+                        public void run() {
+                            double y = Math.random();
+/*                            series.add(
+                                    new DataSeriesItem(count++, y),
+                                    true, count > 10);*/
+                            todoList.addTodo(new Todo("" + (count++) + "  y: "+y));
+                        }
+                    });
+                }
+
+                // Inform that we have stopped running
+                access(new Runnable() {
+                    @Override
+                    public void run() {
+                        setContent(new Label("Done!"));
+                    }
+                });
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
