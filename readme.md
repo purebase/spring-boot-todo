@@ -16,8 +16,10 @@ http://localhost:8080
 For debugging call ...
 http://localhost:8080/?debug
 
-
-Addions:
+I have copied this example from ...
+https://github.com/marcushellberg/spring-boot-todo
+(https://www.youtube.com/watch?v=qUBt8k4pQgQ)
+... and optimized it:
 - gradle instead of maven
 - enabled browser debug window  
 - Adding the new 'push' (vaadin 8) to application. Now the server can push messages over websockets - awesome!!!
