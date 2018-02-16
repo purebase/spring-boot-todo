@@ -1,5 +1,6 @@
-package com.example;
+package com.example.repo;
 
+import com.example.model.Todo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.transaction.Transactional;

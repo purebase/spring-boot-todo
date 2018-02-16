@@ -1,5 +1,6 @@
-package com.example;
+package com.example.ui;
 
+import com.example.model.Todo;
 import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -22,7 +23,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class TodoUI extends UI {
 
     private VerticalLayout layout;
-
     @Autowired
     TodoList todoList;
 

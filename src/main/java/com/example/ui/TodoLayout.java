@@ -1,5 +1,6 @@
-package com.example;
+package com.example.ui;
 
+import com.example.model.Todo;
 import com.vaadin.data.Binder;
 import com.vaadin.shared.ui.ValueChangeMode;
 import com.vaadin.ui.Alignment;
@@ -7,8 +8,6 @@ import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.themes.ValoTheme;
-
-import java.util.Arrays;
 
 
 public class TodoLayout extends HorizontalLayout {
